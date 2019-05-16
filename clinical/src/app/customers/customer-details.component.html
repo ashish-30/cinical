@@ -1,0 +1,139 @@
+<div class='card'
+  *ngIf='customer'>
+      <div class='card-header'>
+          Details of {{ customer.Customer.ContactName }}
+      </div>
+
+<div class='card-body'>
+ <div class='row'>
+   <div class='col-md-12'>
+     <div class='row'>
+       <div class='col-md-4'>Name:</div>
+       <div class='col-md-8'>{{customer.Customer.ContactName}}</div>
+     </div>
+     <div class='row'>
+       <div class='col-md-4'>Customer Id:</div>
+       <div class='col-md-8'>{{ customer.Customer.Id }}</div>
+     </div>
+     <div class='row'>
+       <div class='col-md-4'>Company Name:</div>
+       <div class='col-md-8'>{{ customer.Customer.CompanyName }}</div>
+     </div>
+     <div class='row'>
+       <div class='col-md-4'>Address:</div>
+       <div class='col-md-8'>{{ customer.Customer.Address }}</div>
+     </div>
+     <div class='row'>
+       <div class='col-md-4'>City:</div>
+       <div class='col-md-8'>{{ customer.Customer.City}}</div>
+     </div>
+     <div class='row'>
+       <div class='col-md-4'>Country:</div>
+       <div class='col-md-8'>
+         {{ customer.Customer.Country }}
+       </div>
+     </div>
+   </div>
+ </div>
+</div>
+<!-- <h2 *ngIf='customer && customer.CustomerOrders[].length'>Order Details of {{ customer.CustomerOrders }}</h2> -->
+<div class="card" *ngIf='customer.CustomerOrders.length'>
+  <div class="card-header">Order Details</div>
+      <div class='card-body order-details-wrap'>
+                <mat-list>
+                  <div class="panel-wrapper" *ngFor='let custorder of customer.CustomerOrders'>
+                   <mat-expansion-panel>
+                          <mat-expansion-panel-header>
+                              <mat-list-item>
+                                  <a style="cursor: pointer;">
+                                    Order ID:{{ custorder.Order.Id  }}
+                                  </a>
+                              </mat-list-item>
+                          </mat-expansion-panel-header>
+                          <mat-list style="margin-left:30px;">
+                              <div>
+                                <mat-list-item>
+                                  <div class='ash-outer-row'>
+                                    <div class="ash-inner-row">
+                                        <div class=''>Order Date:</div>
+                                        <div class='order-value'>
+                                           {{ myDateParser(custorder.Order.OrderDate) | date: 'dd/MM/yyyy' }}
+                                          
+                                        </div>
+                                    </div>
+                                    <div class="ash-inner-row">
+                                       <div class=''>Required Date:</div>
+                                        <div class='order-value'>
+                                          {{ myDateParser(custorder.Order.RequiredDate) | date: 'dd/MM/yyyy'  }}
+                                        </div>
+                                    </div>
+                                  </div>
+                                  <div class='ash-outer-row'>
+                                    <div class="ash-inner-row">
+                                        <div class=''>Shipped Date:</div>
+                                        <div class='order-value'>
+                                         {{ myDateParser(custorder.Order.ShippedDate) | date: 'dd/MM/yyyy' }}
+                                        </div>
+                                    </div>
+                                    <div class="ash-inner-row">
+                                       <div class=''>Shipping Via:</div>
+                                        <div class='order-value'>
+                                          {{custorder.Order.ShipVia  }}
+                                        </div>
+                                    </div>
+                                  </div>
+
+                            </mat-list-item>
+                              </div>
+                              <div class="products-wrapper">
+                                  <p>Product Details</p>
+                                  <table class="table table-resonsivep">
+                                    <thead>
+                                      <tr>
+                                        <!-- <th>OrderId</th> -->
+                                        <th>ProductId</th>
+                                        <th>UnitPrice</th>
+                                        <th>Quantity</th>
+                                        <th>Discount</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr *ngFor='let product of custorder.OrderDetails'>
+                                        <!-- <td>{{product.OrderId}}</td> -->
+                                        <td> {{product.ProductId}}</td>
+                                        <td>{{product.UnitPrice}}</td>
+                                        <td>{{product.Quantity}}</td>
+                                        <td>{{product.Discount}}</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                  <!-- <div class="row">
+                                    <div class="col-md-6" *ngFor='let product of custorder.OrderDetails'>
+                                      <div>{{custorder.OrderDetails.OrderId}}</div>
+                                      {{custorder.OrderDetails.ProductId}}
+                                      {{custorder.OrderDetails.UnitPrice}}
+                                      {{custorder.OrderDetails.Quantity}}
+.                                      {{custorder.OrderDetails.Discount}}
+                                    </div>
+                                  </div> -->
+                            </div>
+                          </mat-list>
+                      </mat-expansion-panel>
+                  </div>
+                </mat-list>
+                <!-- <div class="more-btn" (click)='toggleOrders()'>
+                  <img src="../../assets/images/angle-arrow-down.png">
+                </div>
+                <div class="more-order" *ngIf='showOrders'>More Orders</div> -->
+
+      </div>
+</div>
+<div class='card-footer'>
+ <button class='btn btn-outline-secondary'
+         (click)='onBack()'
+         style='width:80px'>
+   <i class='fa fa-chevron-left'></i> Back
+ </button>
+</div>
+</div>
+

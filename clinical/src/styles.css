@@ -1,0 +1,56 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+/* @import "~font-awesome/css/font-awesome.min.css"; */
+div.card-header {
+ font-size: large;
+}
+
+div.card {
+  margin-top: 10px
+}
+
+.table {
+  margin-top: 10px
+}
+
+
+html, body { height: 100%; }
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.panel-wrapper .mat-expansion-panel-body{
+  background-color: #D7DAE3!important;
+  color: #ffffff !important;
+  padding: 16px 24px 16px;
+}
+
+.panel-wrapper .mat-expansion-panel-header .mat-expansion-indicator::after{
+  color: #ffffff!important;
+}
+
+.ash-table{
+  width: 100%;
+  margin-top: 25px;
+}
+
+.mat-card-header .mat-card-header-text{
+  margin-left: 0;
+}
+
+.hide{
+  display: none;
+}
+
+@media screen and (max-width: 768px){
+  .ash-table{
+    overflow-x: auto;
+    display: block
+  }
+  .ash-table td,.ash-table tr{
+    white-space: nowrap;
+  }
+  .ash-table td.mat-cell{
+    padding: 5px;
+  }
+}

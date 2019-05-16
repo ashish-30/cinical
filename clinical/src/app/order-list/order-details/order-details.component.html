@@ -1,0 +1,38 @@
+
+<div>
+
+<h2 *ngFor='let order of finalData'>{{ order.Order.Id }}</h2>
+</div>
+<mat-card class="order-card" *ngFor='let order of finalData'>
+        <mat-card-header>
+          <mat-card-title>Order Details</mat-card-title>
+          <mat-card-subtitle>Order No: {{ order.Order.Id }}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+                <table class="table table-resonsive">
+                        <thead>
+                          <tr>
+                            <th>ProductId</th>
+                            <th>UnitPrice</th>
+                            <th>Quantity</th>
+                            <th>Discount</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor='let product of order.OrderDetails'>
+                            <td> {{product.ProductId}}</td>
+                            <td>{{product.UnitPrice}}</td>
+                            <td>{{product.Quantity}}</td>
+                            <td>{{product.Discount}}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+        </mat-card-content>
+        <mat-card-actions>
+                <button class='btn btn-outline-secondary'
+                        (click)='onBackClick()'
+                        style='width:80px'>
+                        <i class='fa fa-chevron-left'></i> Back
+                </button>
+        </mat-card-actions>
+</mat-card>

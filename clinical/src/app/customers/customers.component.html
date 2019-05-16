@@ -1,0 +1,97 @@
+<mat-card class="customers-card">
+  <mat-card-header>
+    <mat-card-title>Customers</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <!-- <div class='row'>
+      <div class='col-md-2'>Filter by:</div>
+      <div class='col-md-4'>
+        <input type='text' [(ngModel)]='listFilter' />
+      </div>
+    </div> -->
+    <!-- <div class='row'>
+      <div class='col-md-12'>
+        <p>Filtered Here:  <input [(ngModel)]="searchText" placeholder="Search.." class="advancedSearchTextbox"></p>
+      </div>
+    </div> -->
+    <!-- <div class='table-responsive'>
+      <table class='table mat-table class="mat-elevation-z8'
+             *ngIf='customers && customers.length'>
+        <thead>
+          <tr>
+            <th>S/N</th>
+            <th>
+              ID
+            </th>
+            <th>
+              Name
+            </th>
+            <th>Company Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor='let customer of customers | customFilter: { Id: searchText, CompanyName:searchText,  ContactName: searchText}; let i=index;'>
+              <td style="width: 5%;">{{i +1}}</td>
+            <td>
+                {{ customer.Id }}
+            </td>
+            <td>
+                <a [routerLink]="['/customers', customer.Id ]">
+                {{ customer.ContactName}}
+                </a>
+            </td>
+            <td>
+              {{ customer.CompanyName }}
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div> -->
+    <mat-form-field>
+    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+    <div class="mat-elevation-z8">
+          <table mat-table [dataSource]="dataSource" matSort class="ash-table">
+            <ng-container matColumnDef="Id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+            <td mat-cell *matCellDef="let element"> {{element.Id}} </td>
+          </ng-container>
+          <ng-container matColumnDef="ContactName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element">
+                <a [routerLink]="['/customers', element.Id ]">{{element.ContactName}} </a>
+            </td>
+          </ng-container>
+          <ng-container matColumnDef="CompanyName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Company Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.CompanyName}} </td>
+          </ng-container>
+          <ng-container matColumnDef="Address">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+              <td mat-cell *matCellDef="let element"> {{element.Address}} </td>
+            </ng-container>
+            <ng-container matColumnDef="City">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> City </th>
+                <td mat-cell *matCellDef="let element"> {{element.City}} </td>
+            </ng-container>
+            <ng-container matColumnDef="Country">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Country </th>
+                <td mat-cell *matCellDef="let element"> {{element.Country}} </td>
+            </ng-container>
+            <ng-container matColumnDef="loading">
+                <td mat-footer-cell *matFooterCellDef colspan="6"> Loading... </td>
+             </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+          <tr mat-footer-row *matFooterRowDef="['loading']" [ngClass]="{'hide':dataSource!=null}"></tr>
+        </table>
+   
+      <!-- <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator> -->
+      <mat-paginator [pageSizeOptions]="[8, 10, 20]" showFirstLastButtons></mat-paginator>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div *ngIf='errorMessage'
+     class='alert alert-danger'>
+  Error: {{ errorMessage }}
+</div>

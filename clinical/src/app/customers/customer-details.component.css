@@ -1,0 +1,63 @@
+.ash-order-warpper:nth-child(2n){
+    background-color: #C4C7D6;
+}
+
+.ash-order-warpper:nth-child(2n+1){
+    background-color: #D7DAE3;
+}
+
+.panel-wrapper{
+  margin: 10px 0;
+}
+
+.ash-order-warpper .ash-row-warpper{
+    background-color: #8990AD;
+    color: #ffffff;
+    padding: 8px 0px;
+}
+
+.ash-outer-row{
+  display: flex;
+  width: 50%;
+  flex-direction: column;
+}
+
+.ash-inner-row{
+    padding: 8px 0;
+    display: flex;
+}
+
+.order-details-wrap .mat-expansion-panel-header{
+  background-color: #8990AD;
+  color: #ffffff;
+}
+.order-details-wrap .mat-expansion-panel:not(.mat-expanded) .mat-expansion-panel-header:not([aria-disabled=true]):hover{
+  background-color: #8990AD;
+}
+
+.order-details-wrap .mat-expansion-panel-header a{
+  color: #ffffff;
+}
+
+.products-wrapper{
+  margin-top: 25px;
+  padding: 0 16px;
+}
+
+.order-value{
+  padding-left: 8px;
+}
+.products-wrapper p{
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #64697E;
+  padding: 10px 8px;
+  border-radius: 6px;
+}
+
+
+/* .more-btn{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+} */
